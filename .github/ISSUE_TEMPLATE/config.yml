@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: The validation page
+    url: https://antennaknobs.dev/reference/validation/
+    about: The published cross-engine verdicts this repo feeds.

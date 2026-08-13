@@ -1,0 +1,53 @@
+name: Deck submission
+description: An antenna you don't trust the numbers on, or where programs disagree
+title: "[deck] "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for sending one in. NEC-2-dialect wire decks work best;
+        patch and buried-wire models will get an honest out-of-scope note.
+  - type: input
+    id: antenna
+    attributes:
+      label: What antenna is this?
+      placeholder: e.g. 40 m inverted-vee with a tapered aluminum element
+    validations:
+      required: true
+  - type: textarea
+    id: deck
+    attributes:
+      label: The NEC deck
+      description: Paste the full card deck (GW … EN). It will be committed verbatim, attributed to you.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: story
+    attributes:
+      label: What disagreed, or what don't you trust?
+      description: Which programs, which numbers, at what frequency — or just why the results never sat right.
+    validations:
+      required: true
+  - type: input
+    id: software
+    attributes:
+      label: Programs/versions you ran it on
+      placeholder: e.g. EZNEC 7, 4nec2, MMANA
+    validations:
+      required: false
+  - type: textarea
+    id: measured
+    attributes:
+      label: Measured data (optional)
+      description: If you've measured this antenna (SWR sweep, field strength), that makes it an external anchor — the most valuable kind.
+    validations:
+      required: false
+  - type: checkboxes
+    id: permission
+    attributes:
+      label: Publication
+      options:
+        - label: This deck may be committed to this repository and its verdict published on the antennaknobs validation page, attributed to me.
+          required: true
