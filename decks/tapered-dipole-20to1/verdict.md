@@ -1,7 +1,8 @@
 # Verdict: tapered dipole, 20:1 radius taper
 
-**Submitted:** 2026-08-13, via the groups.io Antenna Research thread
-(SimNEC-authored deck). **Status: verdict published.**
+**Submitted:** 2026-08-13 by Ward Harriman, AE6TY (author of SimNEC),
+via the groups.io Antenna Research thread. **Status: verdict
+published.**
 
 ## The antenna
 
