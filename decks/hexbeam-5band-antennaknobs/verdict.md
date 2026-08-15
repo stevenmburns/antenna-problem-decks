@@ -43,7 +43,7 @@ one mast in free space, 20 / 17 / 15 / 12 / 10 m at 14.300, 18.1575,
 21.383, 24.97 and 28.47 MHz. 50 wires, 308 segments at the base mesh,
 uniform 0.5 mm wire, band 0 on top.
 
-Two parameter sets appear below, both shipped:
+Three parameter sets appear below, all shipped:
 
 - **`default`** — the untuned canonical set (`halfdriver_factor` 1.071,
   `t0_factor` 0.1243, `tipspacer_factor` 0.1312 on every band). This is
@@ -54,9 +54,15 @@ Two parameter sets appear below, both shipped:
   objective evaluation, so the optimiser sees real inter-band coupling.
   Reached as `multiband.hexbeam_5band:opt_coupled`. Reported as a
   companion throughout.
+- **`opt_physical`** — the follow-up this verdict's own findings forced
+  (antennaknobs#921): the same knobs re-tuned with the objective
+  evaluated through the one-coax reduction, i.e. against the Z a
+  builder's coax actually sees. Covered in *"The physical antenna"*
+  below only — it targets the single-feed model, so the multi-feed
+  censuses above it do not apply.
 
-(A third set, `opt`, is a sequential single-band tune that does not see
-coupling; it is not covered here.)
+(A fourth set, `opt`, is a sequential single-band tune that does not
+see coupling; it is not covered here.)
 
 **This verdict is about the catalog design, not about G3TXQ's built
 5-bander.** They differ structurally in ways that matter more than in
@@ -219,6 +225,30 @@ Two things the multi-feed census could not have told you:
    −j21** on four bands (SWR 1.47–1.54). A tune against the physical
    feed is a different optimisation, and this deck shows the gap.
 
+### And closed: the `opt_physical` tune
+
+Finding 2 became antennaknobs#921, and `opt_physical` is the answer: a
+re-tune of the same per-band knobs with every objective evaluation
+routed through the one-coax reduction (full 5-port Y + jumper-chain
+stamp per solve, momwire engine). Starting from `opt_coupled` it
+converged in two coordinate-descent passes. Refined (N=63), same
+two-formulation protocol as above:
+
+| band | `opt_physical` consensus | SWR₅₀ | bs2 vs PyNEC |
+| --- | --- | --- | --- |
+| 20 m | 50.44 + j0.35 | 1.01 | 0.256 Ω, ΔΓ 0.0025 |
+| 17 m | 50.51 + j0.65 | 1.02 | 0.523 Ω, ΔΓ 0.0052 |
+| 15 m | 50.75 + j0.15 | 1.02 | 0.375 Ω, ΔΓ 0.0037 |
+| 12 m | 51.60 + j0.44 | 1.03 | 0.396 Ω, ΔΓ 0.0038 |
+| 10 m | 50.67 + j0.17 | 1.01 | 0.374 Ω, ΔΓ 0.0037 |
+
+The −j17…−j21 residual is gone; worst SWR₅₀ across the five bands is
+1.03 (momwire) / 1.04 (PyNEC). The mesh-sensitivity asymmetry above
+repeats on cue: the tune was run at bs2's base mesh, and refining moves
+bs2 only 0.5–1.4 Ω, while a base-mesh PyNEC run of the same geometry
+reads 4–5 Ω low in R on every band. Same lesson — refine NEC-2 before
+believing it on this model.
+
 **Mesh sensitivity is where the two engines differ most.** Between
 N=21 and N=63 the bs2 answer moves 0.3–2.1 Ω, while PyNEC moves
 3.7–15.4 Ω — the network reduction amplifies NEC-2's base-mesh deficit,
@@ -248,7 +278,9 @@ coupled-tuned decks are in `opt_coupled/`. The ladder driver multiplies
 each GW's segment count and re-centers every EX segment.
 The physical single-feed results come from the builder directly
 (`daisy_chain=True`, mesh set by `nominal_nsegs` 21 and 63), since that
-model has no deck form. Engines run through antennaknobs' census harness
+model has no deck form. The `opt_physical` tune is
+`scripts/tune_hexbeam_5band_physical.py` in antennaknobs, and the
+variant is reached as `multiband.hexbeam_5band:opt_physical`. Engines run through antennaknobs' census harness
 (`scripts/bench_nec_corpus.py` — nec2c on PATH, momwire ≥ 0.29.0,
 `$NEC5_EXE` for the licensed NEC-5 lane; NEC-5 printouts are End-User
 Reports, LLNL-CODE-746721). The two 45-solve censuses are 79 s and 108 s
