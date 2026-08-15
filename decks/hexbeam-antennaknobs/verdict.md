@@ -81,8 +81,10 @@ rather than this deck's EX card — both move the curves by fractions of
 an ohm on top of the mesh effect).
 
 The design's own note, not a defect: this hexbeam is not resonant at
-its design frequency. It carries **+j20 Ω** — SWR 1.50 against 50 Ω,
-on which all three engines agree to three decimal places. That matches
+its design frequency. It carries **+j20 Ω** on this deck's 0.5 mm wire
+— SWR 1.50 against 50 Ω, on which all three engines agree to three
+decimal places (a #16 build sits ~3 Ω less inductive; see the wire
+judgment call below). That matches
 what G3TXQ published for the broadband design, whose modelled and
 measured SWR minima also sit near 1.4–1.5 rather than at 1.0. The
 broadband hexbeam trades a perfect match for bandwidth by design.
@@ -93,11 +95,16 @@ Three choices a reader should weigh before reusing these numbers:
 
 - **Wire: 0.5 mm radius, PEC.** G3TXQ built and published with #16 bare
   copper (0.645 mm radius); the deck's wire is 22% thinner and lossless.
-  G3TXQ measured this geometry's *tuning* to be "largely independent of
-  wire gauge" — explicitly noting that gauge correction factors need not
-  be applied to published reflector dimensions — so the impedance verdict
-  above carries across. His charts do move SWR and F/B with gauge,
-  so **gain and front-to-back claims should not be read off this deck.**
+  We measured the gauge dependence at the finest rung rather than assuming
+  it: R barely moves (+0.6 Ω across #18-class → #14) — the resistive
+  signature of G3TXQ's actual claim, that *tuning* and published
+  *dimensions* are gauge-independent — but the reactance does not:
+  **+j20.4 on this deck's wire → +j17.3 on #16 → +j14.5 on #14** (SWR
+  1.50 → 1.41 → 1.33, independently matching G3TXQ's own SWR-vs-gauge
+  chart). All three engines agree on the shift to within 0.03 Ω. So read
+  this deck's R as the built antenna's; read its X as the thin wire's —
+  the consensus for a #16 build is **50.5 + j17.3 Ω** — and do not read
+  gain or front-to-back off a lossless-wire deck at all.
 - **The feed.** A 0.05 m wire spans the hex center, against ~0.12 m
   segments on its neighbours — a segment-length discontinuity sitting
   exactly at the source. The hentenna deck had its short-bridge feed
