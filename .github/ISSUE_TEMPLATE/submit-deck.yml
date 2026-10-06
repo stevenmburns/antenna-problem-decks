@@ -6,8 +6,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for sending one in. NEC-2-dialect wire decks work best;
-        patch and buried-wire models will get an honest out-of-scope note.
+        Thanks for sending one in. NEC-2-dialect wire decks work best, and
+        NEC-4 / NEC-5 dialect decks are welcome. Wires over or buried in
+        real ground are in scope; surface-patch models will get an honest
+        out-of-scope note.
   - type: input
     id: antenna
     attributes:
