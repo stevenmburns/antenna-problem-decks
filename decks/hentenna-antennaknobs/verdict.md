@@ -111,8 +111,8 @@ one machine:
   printouts are End-User Reports, LLNL-CODE-491368.
 - NEC-5 is the licensed binary (sha256 `39e628ad79ea1b54…`) through
   `NEC5Engine`, with an (N, 2N) pair per rung; LLNL-CODE-746721.
-- momwire `main` at `6550d7e3` (0.72.0 plus unreleased commits) ran as
-  bs2 through antennaknobs `main` at `5aef3392`.
+- momwire `main` at `6b71942d` (0.73.1 plus unreleased commits) ran as
+  bs2 through antennaknobs `main` at `ed5058f4`.
 
 Kernels, stated explicitly:
 
@@ -123,5 +123,5 @@ Kernels, stated explicitly:
 - **NEC-5** has no `EK` card.
 
 A kernel-matched bs2 run (extended kernel forced on) differs from the
-table's bs2 by at most 0.02 Ω at any rung. The kernel is not what
+table's bs2 by at most 0.024 Ω at any rung. The kernel is not what
 separates the engines here.
