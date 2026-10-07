@@ -487,8 +487,8 @@ each deck at the frequency on its own `FR` card.
   its printouts are End-User Reports, LLNL-CODE-491368. NEC-5 is the
   licensed binary (sha256 `39e628ad79ea1b54…`) through `NEC5Engine`,
   with an (N, 2N) pair per rung; LLNL-CODE-746721. momwire `main` at
-  `6550d7e3` (0.72.0 plus unreleased commits) ran as bs2 through
-  antennaknobs `main` at `5aef3392`.
+  `6b71942d` (0.73.1 plus unreleased commits) ran as bs2 through
+  antennaknobs `main` at `ed5058f4`.
 - **Physical antenna.** It came from the builder with
   `daisy_chain=True` at each variant's parameters. Each engine solved
   it through its own antennaknobs engine class (`MomwireEngine`
@@ -504,7 +504,7 @@ Kernels, stated explicitly:
 - **NEC-5** has no `EK` card.
 
 A kernel-matched bs2 (extended kernel forced on) differs from the
-tables' bs2 by at most 0.02 Ω on any active feed.
+tables' bs2 by at most 0.031 Ω on any active feed.
 
 The design is `multiband.hexbeam_5band` in the antennaknobs catalog —
 the [hosted simulator](https://antennaknobs.dev/) solves it live in its

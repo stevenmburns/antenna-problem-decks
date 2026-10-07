@@ -50,22 +50,23 @@ the ladders head.
 | --- | --- | --- | --- | --- | --- |
 | nec2c (raw NEC-2) | 78.09 + j24.17 | 79.33 + j29.02 | 79.86 + j31.23 | 80.21 + j32.74 | 80.50 + j33.93 |
 | NEC-4.2 | 76.36 + j12.86 | 76.92 + j14.91 | 77.20 + j16.46 | 77.40 + j17.53 | 77.59 + j18.23 |
-| momwire bs2 | 75.68 + j8.10 | 75.93 + j8.45 | 76.02 + j8.56 | 76.07 + j8.62 | 76.11 + j8.66 |
+| momwire bs2 | 75.66 + j7.99 | 75.91 + j8.36 | 76.00 + j8.48 | 76.05 + j8.53 | 76.09 + j8.57 |
 | NEC-5 | 75.89 + j8.10 | 76.06 + j8.25 | 76.13 + j8.25 | 76.16 + j8.19 | 76.20 + j8.26 |
 
 All values are at 14.2 MHz. The NEC-5 rows are each rung's (N, 2N)
 Richardson pair, as before. The NEC-5 (×3, ×5) pair is unchanged:
 **76.22 + j8.24 Ω**. nec2c and NEC-5 reproduce the published ladder
-to the digit. momwire bs2 moved by at most 0.08 Ω, from the solver
-changes since 0.28.1.
+to the digit. momwire bs2 moved by at most 0.14 Ω, from the solver
+changes since 0.28.1, the largest being that the extended kernel now
+applies across this deck's radius steps (momwire#1368).
 
-**The bs2/NEC-5 consensus stands.** bs2 at ×5 sits 0.39 Ω from the
-NEC-5 pair (ΔΓ 0.0024). That matches the published 0.40 Ω / 0.0025,
-and both ladders stay flat through ×9.
+**The bs2/NEC-5 consensus stands.** bs2 at ×5 sits 0.33 Ω from the
+NEC-5 pair (ΔΓ 0.0020), slightly closer than the published
+0.40 Ω / 0.0025, and both ladders stay flat through ×9.
 
 **NEC-4.2 disagrees with that consensus. Here is the size of the gap
 and where it sits.** At ×5 NEC-4.2 reads **77.20 + j16.46 Ω**. That
-is 7.98 Ω from bs2 (ΔΓ 0.049) and 8.28 Ω from the NEC-5 pair
+is 8.07 Ω from bs2 (ΔΓ 0.050) and 8.28 Ω from the NEC-5 pair
 (ΔΓ 0.051). Almost all of the gap is reactance: NEC-4.2 reads about
 8 Ω more inductive than the consensus. Like nec2c's reactance, NEC-4.2's
 rises at every refinement step (+2.05, +1.55, +1.07, +0.70 Ω from one
@@ -109,9 +110,9 @@ NEC-4.2 is the licensed console binary (sha256 `02c6fc87c8cb75cb…`);
 its printouts are End-User Reports, LLNL-CODE-491368. NEC-5 is the
 licensed binary (sha256 `39e628ad79ea1b54…`), driven through
 antennaknobs' `NEC5Engine` with an (N, 2N) pair per rung;
-LLNL-CODE-746721. momwire is `main` at `6550d7e3` (0.72.0 plus
+LLNL-CODE-746721. momwire is `main` at `6b71942d` (0.73.1 plus
 unreleased commits), run as bs2 through antennaknobs `main` at
-`5aef3392`.
+`ed5058f4`.
 
 Kernels, stated explicitly:
 
