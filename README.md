@@ -36,6 +36,7 @@ stays attributed to its submitter.
 
     decks/<slug>/<name>.nec    the submitted deck, verbatim
     decks/<slug>/verdict.md    the four-way verdict and its numbers
+    decks/<slug>/study/        the scripts that produced it, where a case has them
 
 NEC-4.2 and NEC-5 are licensed programs run from the maintainer's own
 licensed binaries; nothing of either is distributed here. Numbers read
