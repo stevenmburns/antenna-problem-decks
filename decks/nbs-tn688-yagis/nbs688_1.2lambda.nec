@@ -1,0 +1,21 @@
+CM NBS Technical Note 688 (Viezbicke 1976), Table 1: 1.2 lambda Yagi,
+CM 6 elements, 400 MHz, element d/lambda = 0.0085, director spacing 0.25 lambda,
+CM reflector 0.2 lambda behind the driven element, non-conducting boom (none modelled).
+CM NBS measured gain 10.2 dB re a half-wave dipole (+-0.5 dB).
+CM Driven element: NBS used a lambda/2 FOLDED dipole of untabulated length. This deck
+CM models it as a STRAIGHT dipole of 0.44411 lambda, trimmed for X = 0 at 400 MHz with
+CM the parasitics present (momwire bs2, x5 mesh). Free space; elements along y, boom +x.
+CE
+GW 1 9 -0.1498962 -0.180625 0 -0.1498962 0.180625 0 0.003185295
+GW 2 9 0 -0.1664262 0 0 0.1664262 0 0.003185295
+GW 3 9 0.1873703 -0.160389 0 0.1873703 0.160389 0 0.003185295
+GW 4 9 0.3747406 -0.157391 0 0.3747406 0.157391 0 0.003185295
+GW 5 9 0.5621109 -0.157391 0 0.5621109 0.157391 0 0.003185295
+GW 6 9 0.7494811 -0.160389 0 0.7494811 0.160389 0 0.003185295
+GE 0
+EX 0 2 5 0 1 0
+FR 0 1 0 0 400 0
+RP 0 1 2 0000 90 0 0 180
+RP 0 1 720 0000 90 0 0 0.5
+RP 0 361 1 0000 0 0 0.5 0
+EN

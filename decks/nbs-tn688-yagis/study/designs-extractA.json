@@ -1,0 +1,1099 @@
+{
+ "report": "NBS Technical Note 688, P. P. Viezbicke, Yagi Antenna Design, Dec 1976",
+ "page_offset": "printed page = PDF page - 7 (PDF 8 = printed 1; Roman-numbered front matter on PDF 1-7)",
+ "units": "all lengths in free-space wavelengths at 400 MHz unless stated",
+ "gain_reference_summary": "dB relative to a half-wave dipole at the same height above ground (not isotropic); +2.16 dB to reference to isotropic (report, p1)",
+ "tabulated_designs": [
+  {
+   "id": "Table 1, 0.4 lambda Yagi",
+   "report_label_length_lambda": "0.4",
+   "boom_length_lambda_as_labelled": 0.4,
+   "boom_length_check_lambda": {
+    "formula": "0.2 (reflector) + N*S",
+    "value": 0.4,
+    "note": "measured from reflector to last director; consistent with label for all six"
+   },
+   "n_directors": 1,
+   "n_elements_total_incl_reflector_and_driven": 3,
+   "director_spacing_lambda": 0.2,
+   "reflector_spacing_behind_driven_lambda": 0.2,
+   "position_convention": "printed table gives only a uniform director spacing S; positions here are DERIVED as cumulative distances from the driven element, director k at k*S (first director at S from driven, reflector at -0.2). The derivation is confirmed by 0.2+N*S equalling the labelled length in all six columns.",
+   "element_diameter_d_over_lambda": 0.0085,
+   "frequency_MHz": 400,
+   "design_curve_in_fig9": "A",
+   "measured_gain_dB": 7.1,
+   "gain_reference": "dB relative to a half-wave dipole at the same height above ground (table row: 'GAIN RELATIVE TO HALF-WAVE DIPOLE IN dB'); add 2.16 dB for isotropic per Sec 2 (p1)",
+   "optimized": "director lengths optimized for maximum gain at this boom length (Table 1 title 'Optimized Lengths'); reflector spacing fixed 0.2 lambda",
+   "elements": [
+    {
+     "role": "reflector",
+     "index": "R",
+     "length_lambda": 0.482,
+     "position_from_driven_lambda": -0.2,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "driven",
+     "index": "DE",
+     "length_lambda": null,
+     "length_note": "lambda/2 folded dipole; length not tabulated",
+     "position_from_driven_lambda": 0.0,
+     "source": {
+      "pdf_page": 9,
+      "printed_page": 2,
+      "text": "Sec 3.2"
+     }
+    },
+    {
+     "role": "director",
+     "index": 1,
+     "length_lambda": 0.424,
+     "position_from_driven_lambda": 0.2,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    }
+   ],
+   "length_note": "Lengths are as tabulated at d/lambda=0.0085; no boom correction included (boom-correction procedure Sec 4 step 5 adds it afterwards). Lengths printed to 0.001 lambda.",
+   "source": {
+    "pdf_page": 14,
+    "printed_page": 7,
+    "table": "Table 1"
+   }
+  },
+  {
+   "id": "Table 1, 0.8 lambda Yagi",
+   "report_label_length_lambda": "0.8",
+   "boom_length_lambda_as_labelled": 0.8,
+   "boom_length_check_lambda": {
+    "formula": "0.2 (reflector) + N*S",
+    "value": 0.8,
+    "note": "measured from reflector to last director; consistent with label for all six"
+   },
+   "n_directors": 3,
+   "n_elements_total_incl_reflector_and_driven": 5,
+   "director_spacing_lambda": 0.2,
+   "reflector_spacing_behind_driven_lambda": 0.2,
+   "position_convention": "printed table gives only a uniform director spacing S; positions here are DERIVED as cumulative distances from the driven element, director k at k*S (first director at S from driven, reflector at -0.2). The derivation is confirmed by 0.2+N*S equalling the labelled length in all six columns.",
+   "element_diameter_d_over_lambda": 0.0085,
+   "frequency_MHz": 400,
+   "design_curve_in_fig9": "B",
+   "measured_gain_dB": 9.2,
+   "gain_reference": "dB relative to a half-wave dipole at the same height above ground (table row: 'GAIN RELATIVE TO HALF-WAVE DIPOLE IN dB'); add 2.16 dB for isotropic per Sec 2 (p1)",
+   "optimized": "director lengths optimized for maximum gain at this boom length (Table 1 title 'Optimized Lengths'); reflector spacing fixed 0.2 lambda",
+   "elements": [
+    {
+     "role": "reflector",
+     "index": "R",
+     "length_lambda": 0.482,
+     "position_from_driven_lambda": -0.2,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "driven",
+     "index": "DE",
+     "length_lambda": null,
+     "length_note": "lambda/2 folded dipole; length not tabulated",
+     "position_from_driven_lambda": 0.0,
+     "source": {
+      "pdf_page": 9,
+      "printed_page": 2,
+      "text": "Sec 3.2"
+     }
+    },
+    {
+     "role": "director",
+     "index": 1,
+     "length_lambda": 0.428,
+     "position_from_driven_lambda": 0.2,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 2,
+     "length_lambda": 0.424,
+     "position_from_driven_lambda": 0.4,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 3,
+     "length_lambda": 0.428,
+     "position_from_driven_lambda": 0.6,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    }
+   ],
+   "length_note": "Lengths are as tabulated at d/lambda=0.0085; no boom correction included (boom-correction procedure Sec 4 step 5 adds it afterwards). Lengths printed to 0.001 lambda.",
+   "source": {
+    "pdf_page": 14,
+    "printed_page": 7,
+    "table": "Table 1"
+   }
+  },
+  {
+   "id": "Table 1, 1.20 lambda Yagi",
+   "report_label_length_lambda": "1.20",
+   "boom_length_lambda_as_labelled": 1.2,
+   "boom_length_check_lambda": {
+    "formula": "0.2 (reflector) + N*S",
+    "value": 1.2,
+    "note": "measured from reflector to last director; consistent with label for all six"
+   },
+   "n_directors": 4,
+   "n_elements_total_incl_reflector_and_driven": 6,
+   "director_spacing_lambda": 0.25,
+   "reflector_spacing_behind_driven_lambda": 0.2,
+   "position_convention": "printed table gives only a uniform director spacing S; positions here are DERIVED as cumulative distances from the driven element, director k at k*S (first director at S from driven, reflector at -0.2). The derivation is confirmed by 0.2+N*S equalling the labelled length in all six columns.",
+   "element_diameter_d_over_lambda": 0.0085,
+   "frequency_MHz": 400,
+   "design_curve_in_fig9": "B",
+   "measured_gain_dB": 10.2,
+   "gain_reference": "dB relative to a half-wave dipole at the same height above ground (table row: 'GAIN RELATIVE TO HALF-WAVE DIPOLE IN dB'); add 2.16 dB for isotropic per Sec 2 (p1)",
+   "optimized": "director lengths optimized for maximum gain at this boom length (Table 1 title 'Optimized Lengths'); reflector spacing fixed 0.2 lambda",
+   "elements": [
+    {
+     "role": "reflector",
+     "index": "R",
+     "length_lambda": 0.482,
+     "position_from_driven_lambda": -0.2,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "driven",
+     "index": "DE",
+     "length_lambda": null,
+     "length_note": "lambda/2 folded dipole; length not tabulated",
+     "position_from_driven_lambda": 0.0,
+     "source": {
+      "pdf_page": 9,
+      "printed_page": 2,
+      "text": "Sec 3.2"
+     }
+    },
+    {
+     "role": "director",
+     "index": 1,
+     "length_lambda": 0.428,
+     "position_from_driven_lambda": 0.25,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 2,
+     "length_lambda": 0.42,
+     "position_from_driven_lambda": 0.5,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 3,
+     "length_lambda": 0.42,
+     "position_from_driven_lambda": 0.75,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 4,
+     "length_lambda": 0.428,
+     "position_from_driven_lambda": 1.0,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    }
+   ],
+   "length_note": "Lengths are as tabulated at d/lambda=0.0085; no boom correction included (boom-correction procedure Sec 4 step 5 adds it afterwards). Lengths printed to 0.001 lambda.",
+   "source": {
+    "pdf_page": 14,
+    "printed_page": 7,
+    "table": "Table 1"
+   }
+  },
+  {
+   "id": "Table 1, 2.2 lambda Yagi",
+   "report_label_length_lambda": "2.2",
+   "boom_length_lambda_as_labelled": 2.2,
+   "boom_length_check_lambda": {
+    "formula": "0.2 (reflector) + N*S",
+    "value": 2.2,
+    "note": "measured from reflector to last director; consistent with label for all six"
+   },
+   "n_directors": 10,
+   "n_elements_total_incl_reflector_and_driven": 12,
+   "director_spacing_lambda": 0.2,
+   "reflector_spacing_behind_driven_lambda": 0.2,
+   "position_convention": "printed table gives only a uniform director spacing S; positions here are DERIVED as cumulative distances from the driven element, director k at k*S (first director at S from driven, reflector at -0.2). The derivation is confirmed by 0.2+N*S equalling the labelled length in all six columns.",
+   "element_diameter_d_over_lambda": 0.0085,
+   "frequency_MHz": 400,
+   "design_curve_in_fig9": "C",
+   "measured_gain_dB": 12.25,
+   "gain_reference": "dB relative to a half-wave dipole at the same height above ground (table row: 'GAIN RELATIVE TO HALF-WAVE DIPOLE IN dB'); add 2.16 dB for isotropic per Sec 2 (p1)",
+   "optimized": "director lengths optimized for maximum gain at this boom length (Table 1 title 'Optimized Lengths'); reflector spacing fixed 0.2 lambda",
+   "elements": [
+    {
+     "role": "reflector",
+     "index": "R",
+     "length_lambda": 0.482,
+     "position_from_driven_lambda": -0.2,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "driven",
+     "index": "DE",
+     "length_lambda": null,
+     "length_note": "lambda/2 folded dipole; length not tabulated",
+     "position_from_driven_lambda": 0.0,
+     "source": {
+      "pdf_page": 9,
+      "printed_page": 2,
+      "text": "Sec 3.2"
+     }
+    },
+    {
+     "role": "director",
+     "index": 1,
+     "length_lambda": 0.432,
+     "position_from_driven_lambda": 0.2,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 2,
+     "length_lambda": 0.415,
+     "position_from_driven_lambda": 0.4,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 3,
+     "length_lambda": 0.407,
+     "position_from_driven_lambda": 0.6,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 4,
+     "length_lambda": 0.398,
+     "position_from_driven_lambda": 0.8,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 5,
+     "length_lambda": 0.39,
+     "position_from_driven_lambda": 1.0,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 6,
+     "length_lambda": 0.39,
+     "position_from_driven_lambda": 1.2,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 7,
+     "length_lambda": 0.39,
+     "position_from_driven_lambda": 1.4,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 8,
+     "length_lambda": 0.39,
+     "position_from_driven_lambda": 1.6,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 9,
+     "length_lambda": 0.398,
+     "position_from_driven_lambda": 1.8,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 10,
+     "length_lambda": 0.407,
+     "position_from_driven_lambda": 2.0,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    }
+   ],
+   "length_note": "Lengths are as tabulated at d/lambda=0.0085; no boom correction included (boom-correction procedure Sec 4 step 5 adds it afterwards). Lengths printed to 0.001 lambda.",
+   "source": {
+    "pdf_page": 14,
+    "printed_page": 7,
+    "table": "Table 1"
+   }
+  },
+  {
+   "id": "Table 1, 3.2 lambda Yagi",
+   "report_label_length_lambda": "3.2",
+   "boom_length_lambda_as_labelled": 3.2,
+   "boom_length_check_lambda": {
+    "formula": "0.2 (reflector) + N*S",
+    "value": 3.2,
+    "note": "measured from reflector to last director; consistent with label for all six"
+   },
+   "n_directors": 15,
+   "n_elements_total_incl_reflector_and_driven": 17,
+   "director_spacing_lambda": 0.2,
+   "reflector_spacing_behind_driven_lambda": 0.2,
+   "position_convention": "printed table gives only a uniform director spacing S; positions here are DERIVED as cumulative distances from the driven element, director k at k*S (first director at S from driven, reflector at -0.2). The derivation is confirmed by 0.2+N*S equalling the labelled length in all six columns.",
+   "element_diameter_d_over_lambda": 0.0085,
+   "frequency_MHz": 400,
+   "design_curve_in_fig9": "B",
+   "measured_gain_dB": 13.4,
+   "gain_reference": "dB relative to a half-wave dipole at the same height above ground (table row: 'GAIN RELATIVE TO HALF-WAVE DIPOLE IN dB'); add 2.16 dB for isotropic per Sec 2 (p1)",
+   "optimized": "director lengths optimized for maximum gain at this boom length (Table 1 title 'Optimized Lengths'); reflector spacing fixed 0.2 lambda",
+   "elements": [
+    {
+     "role": "reflector",
+     "index": "R",
+     "length_lambda": 0.482,
+     "position_from_driven_lambda": -0.2,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "driven",
+     "index": "DE",
+     "length_lambda": null,
+     "length_note": "lambda/2 folded dipole; length not tabulated",
+     "position_from_driven_lambda": 0.0,
+     "source": {
+      "pdf_page": 9,
+      "printed_page": 2,
+      "text": "Sec 3.2"
+     }
+    },
+    {
+     "role": "director",
+     "index": 1,
+     "length_lambda": 0.428,
+     "position_from_driven_lambda": 0.2,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 2,
+     "length_lambda": 0.42,
+     "position_from_driven_lambda": 0.4,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 3,
+     "length_lambda": 0.407,
+     "position_from_driven_lambda": 0.6,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 4,
+     "length_lambda": 0.398,
+     "position_from_driven_lambda": 0.8,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 5,
+     "length_lambda": 0.394,
+     "position_from_driven_lambda": 1.0,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 6,
+     "length_lambda": 0.39,
+     "position_from_driven_lambda": 1.2,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 7,
+     "length_lambda": 0.386,
+     "position_from_driven_lambda": 1.4,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 8,
+     "length_lambda": 0.386,
+     "position_from_driven_lambda": 1.6,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 9,
+     "length_lambda": 0.386,
+     "position_from_driven_lambda": 1.8,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 10,
+     "length_lambda": 0.386,
+     "position_from_driven_lambda": 2.0,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 11,
+     "length_lambda": 0.386,
+     "position_from_driven_lambda": 2.2,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 12,
+     "length_lambda": 0.386,
+     "position_from_driven_lambda": 2.4,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 13,
+     "length_lambda": 0.386,
+     "position_from_driven_lambda": 2.6,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 14,
+     "length_lambda": 0.386,
+     "position_from_driven_lambda": 2.8,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 15,
+     "length_lambda": 0.386,
+     "position_from_driven_lambda": 3.0,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    }
+   ],
+   "length_note": "Lengths are as tabulated at d/lambda=0.0085; no boom correction included (boom-correction procedure Sec 4 step 5 adds it afterwards). Lengths printed to 0.001 lambda.",
+   "source": {
+    "pdf_page": 14,
+    "printed_page": 7,
+    "table": "Table 1"
+   }
+  },
+  {
+   "id": "Table 1, 4.2 lambda Yagi",
+   "report_label_length_lambda": "4.2",
+   "boom_length_lambda_as_labelled": 4.2,
+   "boom_length_check_lambda": {
+    "formula": "0.2 (reflector) + N*S",
+    "value": 4.204,
+    "note": "measured from reflector to last director; consistent with label for all six"
+   },
+   "n_directors": 13,
+   "n_elements_total_incl_reflector_and_driven": 15,
+   "director_spacing_lambda": 0.308,
+   "reflector_spacing_behind_driven_lambda": 0.2,
+   "position_convention": "printed table gives only a uniform director spacing S; positions here are DERIVED as cumulative distances from the driven element, director k at k*S (first director at S from driven, reflector at -0.2). The derivation is confirmed by 0.2+N*S equalling the labelled length in all six columns.",
+   "element_diameter_d_over_lambda": 0.0085,
+   "frequency_MHz": 400,
+   "design_curve_in_fig9": "D",
+   "measured_gain_dB": 14.2,
+   "gain_reference": "dB relative to a half-wave dipole at the same height above ground (table row: 'GAIN RELATIVE TO HALF-WAVE DIPOLE IN dB'); add 2.16 dB for isotropic per Sec 2 (p1)",
+   "optimized": "director lengths optimized for maximum gain at this boom length (Table 1 title 'Optimized Lengths'); reflector spacing fixed 0.2 lambda",
+   "elements": [
+    {
+     "role": "reflector",
+     "index": "R",
+     "length_lambda": 0.475,
+     "position_from_driven_lambda": -0.2,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "driven",
+     "index": "DE",
+     "length_lambda": null,
+     "length_note": "lambda/2 folded dipole; length not tabulated",
+     "position_from_driven_lambda": 0.0,
+     "source": {
+      "pdf_page": 9,
+      "printed_page": 2,
+      "text": "Sec 3.2"
+     }
+    },
+    {
+     "role": "director",
+     "index": 1,
+     "length_lambda": 0.424,
+     "position_from_driven_lambda": 0.308,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 2,
+     "length_lambda": 0.424,
+     "position_from_driven_lambda": 0.616,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 3,
+     "length_lambda": 0.42,
+     "position_from_driven_lambda": 0.924,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 4,
+     "length_lambda": 0.407,
+     "position_from_driven_lambda": 1.232,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 5,
+     "length_lambda": 0.403,
+     "position_from_driven_lambda": 1.54,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 6,
+     "length_lambda": 0.398,
+     "position_from_driven_lambda": 1.848,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 7,
+     "length_lambda": 0.394,
+     "position_from_driven_lambda": 2.156,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 8,
+     "length_lambda": 0.39,
+     "position_from_driven_lambda": 2.464,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 9,
+     "length_lambda": 0.39,
+     "position_from_driven_lambda": 2.772,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 10,
+     "length_lambda": 0.39,
+     "position_from_driven_lambda": 3.08,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 11,
+     "length_lambda": 0.39,
+     "position_from_driven_lambda": 3.388,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 12,
+     "length_lambda": 0.39,
+     "position_from_driven_lambda": 3.696,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    },
+    {
+     "role": "director",
+     "index": 13,
+     "length_lambda": 0.39,
+     "position_from_driven_lambda": 4.004,
+     "position_derived_not_printed": true,
+     "source": {
+      "pdf_page": 14,
+      "printed_page": 7,
+      "table": "Table 1"
+     }
+    }
+   ],
+   "length_note": "Lengths are as tabulated at d/lambda=0.0085; no boom correction included (boom-correction procedure Sec 4 step 5 adds it afterwards). Lengths printed to 0.001 lambda.",
+   "source": {
+    "pdf_page": 14,
+    "printed_page": 7,
+    "table": "Table 1"
+   }
+  }
+ ],
+ "other_configurations": [
+  {
+   "id": "Fig 2, 4.2 lambda Yagi with three reflecting elements (trigonal reflector)",
+   "description": "Same 4.2 lambda Yagi with the single reflector replaced by 3 reflecting elements; text: 'additional 0.75 dB gain' (Sec 3.1, p2)",
+   "elements": [
+    {
+     "role": "reflector 1 (LR1)",
+     "length_lambda": 0.455,
+     "position": "0.173 lambda behind driven element in the boom direction, offset 0.27/2 (=0.135) lambda to one side of boom axis in drawing; see note",
+     "source": {
+      "pdf_page": 10,
+      "printed_page": 3,
+      "figure": "Fig 2"
+     }
+    },
+    {
+     "role": "reflector 2 (LR2)",
+     "length_lambda": 0.455,
+     "position": "0.173 lambda behind driven element, on the opposite side; LR1 and LR2 separated by 0.27 lambda",
+     "source": {
+      "pdf_page": 10,
+      "printed_page": 3,
+      "figure": "Fig 2"
+     }
+    },
+    {
+     "role": "reflector 3 (LR3)",
+     "length_lambda": 0.473,
+     "position": "0.135 lambda behind driven element, on boom axis",
+     "source": {
+      "pdf_page": 10,
+      "printed_page": 3,
+      "figure": "Fig 2"
+     }
+    }
+   ],
+   "figure_note": "Drawing shows dimensions 0.173 lambda, 0.135 lambda, 0.27 lambda, FREQ=400 MHz, '[LENGTHS NOT CORRECTED FOR BOOM OR SUPPORT THICKNESS]'. Which dimension is lateral vs along boom is read from the drawing (0.173 and 0.135 along boom; 0.27 between elements 1 and 2). Gain of this variant not tabulated beyond +0.75 dB.",
+   "gain_increment_dB": 0.75,
+   "source": {
+    "pdf_page": 10,
+    "printed_page": 3
+   }
+  },
+  {
+   "id": "Fig 8, 1.25 lambda Yagi, 3 directors spaced 0.35 lambda (diameter study)",
+   "description": "Reflector + driven + 3 equal directors, S=0.35 lambda; director length and diameter varied. Gain read from graph, see corrections.json.",
+   "boom_length_lambda": 1.25,
+   "n_directors": 3,
+   "director_spacing_lambda": 0.35,
+   "source": {
+    "pdf_page": 15,
+    "printed_page": 8,
+    "figure": "Fig 8"
+   }
+  },
+  {
+   "id": "Fig 1, dipole + one reflector, gain vs spacing",
+   "description": "Gain of dipole+reflector (no directors); reflector at spacing S behind the driven dipole. Maximum 2.6 dB at S=0.2 lambda (text, p2). Reflector length 0.482 lambda (text Sec 3.2, for the Yagis). Points are graph readings, +/-0.05 dB; gain in dB relative to a half-wave dipole.",
+   "points_graph_reading": [
+    {
+     "S_lambda": 0.057,
+     "gain_dB": 1.14
+    },
+    {
+     "S_lambda": 0.08,
+     "gain_dB": 1.91
+    },
+    {
+     "S_lambda": 0.101,
+     "gain_dB": 2.32
+    },
+    {
+     "S_lambda": 0.12,
+     "gain_dB": 2.45
+    },
+    {
+     "S_lambda": 0.141,
+     "gain_dB": 2.58
+    },
+    {
+     "S_lambda": 0.2,
+     "gain_dB": 2.61
+    },
+    {
+     "S_lambda": 0.299,
+     "gain_dB": 2.56
+    },
+    {
+     "S_lambda": 0.35,
+     "gain_dB": 2.48
+    }
+   ],
+   "source": {
+    "pdf_page": 10,
+    "printed_page": 3,
+    "figure": "Fig 1"
+   }
+  },
+  {
+   "id": "Fig 7 uniform-length-director comparison (graph readings)",
+   "description": "Gain of Yagis whose directors all have one 'optimum uniform length' (curve 2) vs optimized lengths (curve 1 = Table 1). Reflector 0.2 lambda on all. Graph readings +/-0.1 dB; uniform director lengths themselves are NOT given.",
+   "points": [
+    {
+     "N": 1,
+     "S": 0.2,
+     "gain_dB_uniform": 7.1,
+     "overall_length_lambda": 0.4
+    },
+    {
+     "N": 3,
+     "S": 0.2,
+     "gain_dB_uniform": 9.0,
+     "overall_length_lambda": 0.8
+    },
+    {
+     "N": 4,
+     "S": 0.25,
+     "gain_dB_uniform": 10.1,
+     "overall_length_lambda": 1.2
+    },
+    {
+     "N": 10,
+     "S": 0.2,
+     "gain_dB_uniform": 11.75,
+     "overall_length_lambda": 2.2
+    },
+    {
+     "N": 15,
+     "S": 0.2,
+     "gain_dB_uniform": 12.7,
+     "overall_length_lambda": 3.2
+    },
+    {
+     "N": 13,
+     "S": 0.3,
+     "gain_dB_uniform": 13.4,
+     "overall_length_lambda": 4.1
+    }
+   ],
+   "source": {
+    "pdf_page": 15,
+    "printed_page": 8,
+    "figure": "Fig 7"
+   }
+  }
+ ],
+ "worked_examples": [
+  {
+   "id": "Worked example 1 (derived, not measured): 0.8 lambda Yagi at 50.1 MHz",
+   "lambda_cm": 597,
+   "element_d_cm": 2.54,
+   "d_over_lambda": 0.0042,
+   "boom_D_cm": 5.1,
+   "D_over_lambda": 0.0085,
+   "spacing_lambda": 0.2,
+   "gain_dB_target": 9.2,
+   "uncompensated_lambda": {
+    "D1=D3": 0.442,
+    "D2": 0.438,
+    "R": 0.485
+   },
+   "boom_correction_lambda": 0.005,
+   "final_lengths_lambda": {
+    "D1=D3": 0.447,
+    "D2": 0.443,
+    "R": 0.49
+   },
+   "final_cm": {
+    "D1=D3": 267,
+    "D2": 264.5,
+    "R": 293
+   },
+   "source": {
+    "pdf_page": 24,
+    "printed_page": 17
+   }
+  },
+  {
+   "id": "Worked example 2 (derived, not measured): 4.2 lambda Yagi at 827 MHz",
+   "lambda_cm": 36.34,
+   "element_d_cm": 0.48,
+   "d_over_lambda": 0.013,
+   "boom_D_cm": 1.27,
+   "D_over_lambda": 0.035,
+   "spacing_lambda": 0.308,
+   "gain_dB_target": 14.2,
+   "uncompensated_lambda": {
+    "D1=D2": 0.414,
+    "D3": 0.409,
+    "D4": 0.395,
+    "D5": 0.391,
+    "D6": 0.385,
+    "D7": 0.381,
+    "D8-D13": 0.377,
+    "R": 0.473
+   },
+   "boom_correction_lambda": 0.026,
+   "final_lengths_lambda": {
+    "D1=D2": 0.44,
+    "D3": 0.435,
+    "D4": 0.421,
+    "D5": 0.417,
+    "D6": 0.411,
+    "D7": 0.407,
+    "D8-D13": 0.403,
+    "R": 0.499
+   },
+   "final_cm": {
+    "D1=D2": 16.0,
+    "D3": 15.8,
+    "D4": 15.3,
+    "D5": 15.1,
+    "D6": 14.9,
+    "D7": 14.8,
+    "D8-D13": 14.6,
+    "R": 18.1
+   },
+   "source": {
+    "pdf_page": 26,
+    "printed_page": 19,
+    "final": {
+     "pdf_page": 28,
+     "printed_page": 21
+    }
+   }
+  }
+ ]
+}
