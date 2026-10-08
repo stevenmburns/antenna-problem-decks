@@ -175,9 +175,12 @@ nec2c and bs2 at Δ/a < 2.5, and it does not change any call.
    makes them electrically longer), the folded driven element (but see
    below, it does not matter), d/λ (0.63 cm / 74.95 cm is 0.0084, not
    0.0085), and NBS's 2.16 dB isotropic offset.
-4. **Where they disagree: front-to-back.** The engines do not agree on
-   F/B, and F/B does not converge on the ladder. See below. Gain and
-   beamwidth are well determined. The rear null is not.
+4. **Front-to-back converges slowly, and to one place.** On the ×1–×9
+   ladder F/B looked unconverged and the engines disagreed. A doubling
+   ladder shows why: NEC-2's free-end cap, Galerkin against point-matched
+   testing, and kernel breakdown once segments are shorter than about 1.5
+   radii. Where the engines meet, the 0.8 λ design reads 13.4–14.0 dB
+   against NBS's 15 dB. See *F/B: a doubling ladder* below.
 
 ## Ground vs free space
 
@@ -290,27 +293,95 @@ consistent with the models, but we do not rely on them. NEC-5 reads
 consistently about 1°–3° wider and is still narrowing at ×9, the same slow
 approach its gain shows.
 
-### F/B (forward over 180°), ×9
+### F/B: a doubling ladder
 
-| design | nec2c | NEC-4.2 | bs2 | NEC-5 | nec2c EK | bs2 EK | NBS |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 0.4 λ | 14.1 | 15.3 | 14.4 | 15.8 | 15.0 | 15.2 | 8 (see the director section above) |
-| 0.8 λ | 11.5 | 14.0 | 12.2 | 15.6 | 13.4 | 13.9 | **15** |
-| 1.2 λ | 12.4 | 17.2 | 13.6 | 20.9 | 15.9 | 17.0 | — |
-| 2.2 λ | 16.2 | 20.5 | 17.2 | 23.7 | 19.2 | 20.2 | — |
-| 3.2 λ | 19.1 | 23.1 | 20.0 | 25.6 | 21.9 | 22.8 | — |
-| 4.2 λ | 18.0 | 21.6 | 18.8 | 23.2 | 20.6 | 21.3 | — |
+F/B is where the engines appeared to disagree on the ×1–×9 ladder above.
+We re-ran it on a ladder that doubles the segment count instead, and looked
+at the whole pattern at every rung, not just the number at 180°.
 
-**F/B is not converged and the engines do not agree on it.** nec2c and
-bs2 (reduced kernel) fall at every refinement. NEC-4.2 rises past ×3.
-NEC-5 falls from a high ×3 value. At ×9 the spread across the four
-as-written lanes is 1.7 dB (0.4 λ) to 8.5 dB (1.2 λ). EK pulls nec2c and
-bs2 to within about 1.3 dB of NEC-4.2, so much of the spread is the
-thin-wire kernel on fat elements at fine meshes. NEC-5 still sits
-0.5–3.7 dB above NEC-4.2. The rear lobe is a near-cancellation, and
-on these fat elements it is the least robust number in the model. NBS's
-one clean F/B (15 dB, 0.8 λ) lies inside the engine spread (11.5–15.6).
-We do not adjudicate F/B further.
+![E-plane patterns as each engine's mesh doubles, with NBS's measured points](figures/fb_progression.png)
+
+*Free space, E-plane (azimuth, the plane of the elements), gain in dBd,
+one curve per rung (light = coarse, dark = fine). Red circles are NBS's
+measurements: forward gain on both designs, plus F/B 15 dB and the 48°
+E-plane beamwidth on the 0.8 λ design. All seven engines × four designs:
+[figures/fb_progression_all.png](figures/fb_progression_all.png).*
+
+**The ladder.** Every element gets n = 9, 19, 37, 75, 151 segments, which
+takes segment length over radius (Δ/a) from about 12 down to 0.7. Each
+deck is fed at its centre segment. NEC-5 and momwire razor-2p feed at a
+knot, so they run their own ladder: n = 10, 20, 40, 80, 160, fed at the
+centre knot (`EX 0 tag n/2 2`), with no extra segment. The engines are
+nec2c, NEC-4.2 and NEC-5, plus momwire's sinusoidal, bs2 and razor-2p
+bases, each also with the extended kernel (EK) where the engine has one.
+
+**What the patterns show:**
+
+- **The forward lobe and sidelobes are the same on every engine at every
+  rung.** All the movement is in the rear lobe.
+- **The rear lobe converges to one place on every engine, at different
+  rates.** Three effects explain it, each with a cause we checked.
+
+1. **NEC-2's free-end cap.** nec2c and NEC-4.2 give a free wire end an
+   end condition for a flat tube end that carries charge. That makes the
+   element act about 0.4a longer at each end, and at a = 0.00425 λ that is
+   0.0034 λ per element, enough to move a Yagi's rear lobe. momwire and
+   NEC-5 use I = 0 at the end and reach the same answer by refining the
+   ends. To check this, we zeroed the cap in nec2c (a five-line research
+   patch to nec2c 1.3.1, `study/nec2c-nocap.patch`). nec2c EK without its
+   cap then reproduces momwire's sinusoidal EK lane rung for rung. On
+   0.8 λ, F/B reads 16.8 / 15.0 / 14.3 / 13.4 / 13.0 dB on both, against
+   14.4 / 13.4 / 13.3 / 13.4 / 12.9 with the cap. With and without the cap
+   meet at n = 75. So nec2c's early plateau is the cap, not convergence.
+2. **Galerkin against point-matched testing.** momwire bs2 converges more
+   slowly than the sinusoidal lane. That is its Galerkin testing, not the
+   B-spline basis: momwire's sinusoidal basis *with* Galerkin testing
+   reproduces bs2's impedance and EK correction to the printed digit. The
+   two testing schemes still differ by about 0.6 dB of F/B at n = 75.
+   Which is closer to the true fat-wire answer would need an exact-kernel
+   reference (momwire#1396).
+3. **Kernel breakdown below Δ/a ≈ 1.5.** At n = 151 (Δ/a ≈ 0.7) every
+   kernel steps off its own trend: nec2c EK and NEC-4.2 kink, and razor-2p
+   leaves NEC-5, which it matches to n = 40. Past n = 75 the rungs are not
+   evidence of anything.
+
+**F/B where the end-cap families meet,** at n = 37 / n = 75 (NEC-5 and
+razor-2p: n = 40 / n = 80):
+
+| design | nec2c EK | nec2c EK, no cap | sin EK | bs2 EK | NEC-4.2 | NEC-5 | razor-2p | NBS |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 0.4 λ | 15.0 / 15.0 | 15.4 / 15.0 | 15.4 / 15.0 | 15.5 / 15.3 | 15.0 / 15.3 | 16.1 / 15.8 | 16.1 / 15.7 | 8 (see the director section above) |
+| 0.8 λ | 13.3 / 13.4 | 14.3 / 13.4 | 14.3 / 13.4 | 14.7 / 14.0 | 13.4 / 14.0 | 17.3 / 15.6 | 17.4 / 15.4 | **15** |
+| 1.2 λ | 15.8 / 16.0 | 17.9 / 16.0 | 17.9 / 15.9 | 18.8 / 17.2 | 15.9 / 17.2 | 25.9 / 20.9 | 26.0 / 20.5 | — |
+| 2.2 λ | 19.2 / 19.3 | 21.0 / 19.3 | 21.0 / 19.3 | 21.8 / 20.4 | 19.3 / 20.4 | 28.5 / 23.7 | 28.5 / 23.3 | — |
+| 3.2 λ | 22.0 / 22.0 | 23.5 / 21.9 | 23.5 / 21.9 | 24.2 / 22.9 | 22.1 / 23.1 | 28.3 / 25.7 | 28.3 / 25.3 | — |
+| 4.2 λ | 20.6 / 20.7 | 21.9 / 20.6 | 21.8 / 20.6 | 22.3 / 21.4 | 20.7 / 21.6 | 24.0 / 23.2 | 24.0 / 23.0 | — |
+
+At n = 75 the capped, uncapped and sinusoidal lanes agree to 0.1 dB on
+every design. bs2 EK sits 0.3–1.2 dB above them (Galerkin testing, point 2).
+NEC-4.2 tracks capped nec2c to n = 37 and then steps up by the same amount.
+It steps away from NEC-2 on short end segments in other studies too, and we
+do not have its source to say why. NEC-5 and
+razor-2p are still descending; their basis converges at first order, as
+their gain ladders show.
+
+On the long booms the number at exactly 180° sits in a dip between two
+rear sidelobes. Front over the *worst* rear lobe (90°–270°) is the more
+robust measure there. At n = 75/80 all seven lanes agree on it to 0.6 dB
+on 3.2 λ (21.6–22.0 dB) and 4.2 λ (19.5–20.1 dB).
+
+**Ground does not change the rear either.** We added a rear-direction fan
+to the over-ground check for the 0.8 λ design (bs2 and NEC-4.2, ×5, 2 λ and
+3 λ over average ground). At grazing (0.25°–2°) F/B is 0.15 dB above free
+space. It rises only 0.7 dB even at 10° elevation.
+
+**The call on F/B.** For the one design NBS measured it on (0.8 λ), the
+engines converge to **13.4–14.0 dB** where the end-cap families meet.
+NEC-5 is still on its way down from 15.6 dB at n = 80. NBS measured
+**15 dB**, so the models sit 1–1.6 dB below it. The rear null is the most
+fragile number in both a model and a range measurement, NBS gives no
+error bar for it, and it is a single point. We report the difference and
+do not adjudicate it.
 
 ## Modelling judgment calls
 
@@ -362,7 +433,21 @@ python run.py ground    # bs2 + NEC-4.2 at 2 and 3 lambda, Sommerfeld
 python run.py folded    # folded driven element, 0.8 lambda
 python sweep04.py       # 0.4 lambda director sweep, x5 and x9
 python3 analyze.py      # tables -> analysis.txt (no solves)
+# the F/B doubling ladder and its checks
+python dbl.py           # 7 designs x 9 lanes, n = 9..151 / 10..160, complex fields
+python nocap_ladder.py  # nec2c EK with its free-end cap zeroed (needs nec2c-nocap)
+python radius.py        # one dipole at d/lambda 0.001 / 0.003 / 0.0085, every lane
+python nocap.py         # dipoles and Yagis, nec2c EK with vs without the cap
+python galerkin_ek.py   # sin vs sin-galerkin vs bs2: the EK correction
+python grrear.py        # F/B over ground at grazing (0.8 lambda)
+python dbl_polar.py && python dbl_polar.py trimmed   # the two figures
+python fb_table.py      # the F/B table above
 ```
+
+`nec2c-nocap` is nec2c 1.3.1 with `study/nec2c-nocap.patch` applied. With
+`NOCAP=1` set, the patch zeroes the free-end factor in the end-segment
+current coefficients. With the variable unset, the build is stock nec2c to
+every printed digit.
 
 - **momwire** 0.74.0 from PyPI
   (`.venv/lib/python3.12/site-packages/momwire/__init__.py`; version and
