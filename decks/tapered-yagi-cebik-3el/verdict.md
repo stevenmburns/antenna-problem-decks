@@ -70,6 +70,22 @@ every element, and the parasitic elements' currents carry the error into
 the feed. momwire's NEC-2 twin (sinusoidal with NEC-2's rules) reproduces
 nec2c to about 0.04 Ω at every rung.
 
+**Equal segment lengths across the steps do not help.** The usual NEC-2
+advice for a stepped element is to keep segments the same length on both
+sides of each diameter step. With every segment in an element about the
+same length (`study/equal_segments.py`), nec2c moves away from the answer
+just as the odd-multiple ladder does:
+
+| segment length | N | nec2c |
+| --- | --- | --- |
+| 20 in | 61 | 19.81 + j17.87 |
+| 8 in | 153 | 16.24 + j26.49 |
+| 4 in | 315 | 13.51 + j34.41 |
+| 2 in | 633 | 11.70 + j40.94 |
+| 1.2 in | 1059 | 10.87 + j44.50 |
+
+So there is no segment count at which raw NEC-2 reaches the answer here.
+
 **momwire's NEC-4.2-rule sinusoidal does not converge either.** It sits
 5–11 Ω off on the usable rungs (25.6 + j5.5 Ω at m = 9), and crosses the
 answer only once segments are about as short as the radius. Licensed
