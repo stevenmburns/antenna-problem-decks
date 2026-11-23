@@ -1,5 +1,5 @@
 CM Cebik W4RNL 3-el 20 m high-load yagi (3lyg3 Fig. 23), each tapered
-CM element replaced by its Leeson uniform equivalent (study/leeson.py)
+CM element replaced by its Leeson uniform equivalent (see verdict.md)
 CE
 GW 1 51 0.000000 -5.438170 0 0.000000 5.438170 0 9.935389e-03
 GW 2 51 2.032000 -5.125596 0 2.032000 5.125596 0 1.023038e-02
