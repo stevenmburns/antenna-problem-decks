@@ -86,6 +86,22 @@ just as the odd-multiple ladder does:
 
 So there is no segment count at which raw NEC-2 reaches the answer here.
 
+The Leeson correction (below) brings NEC-2 to a stable answer about
+6 Ω away, 28.9 + j1.9 Ω: the substitute elements, not NEC-2, carry the
+remaining error.
+
+**momwire's NEC-4.2-rule sinusoidal does not converge either.** It sits
+5–11 Ω off on the usable rungs (25.6 + j5.5 Ω at m = 9), and crosses the
+answer only once segments are about as short as the radius. Licensed
+NEC-4.2 has not been run on this deck yet; until it is, this row is
+momwire's NEC-4.2-rule engine, not NEC-4.2.
+
+**The radius steps are the cause.** The same yagi with every tube at one
+radius (9.525 mm, `study/uniform-control.nec`, detuned to about
+10.9 + j55 Ω) brings both sinusoidal rule sets to within 0.2–1.4 Ω of bs2.
+NEC-2's extended kernel does not fix the tapered case (still about 55 Ω
+off).
+
 ## The Leeson correction
 
 The usual fix for NEC-2 and stepped elements is not a mesh rule. It is
@@ -206,18 +222,6 @@ the feed.
 **Cebik's own corrected results** cannot be compared here: 3lyg3 gives no
 corrected Zin for the 20 m high-load yagi, only "about 30 Ohms" for the
 feed, which both the tapered answer and the Leeson equivalent satisfy.
-
-**momwire's NEC-4.2-rule sinusoidal does not converge either.** It sits
-5–11 Ω off on the usable rungs (25.6 + j5.5 Ω at m = 9), and crosses the
-answer only once segments are about as short as the radius. Licensed
-NEC-4.2 has not been run on this deck yet; until it is, this row is
-momwire's NEC-4.2-rule engine, not NEC-4.2.
-
-**The radius steps are the cause.** The same yagi with every tube at one
-radius (9.525 mm, `study/uniform-control.nec`, detuned to about
-10.9 + j55 Ω) brings both sinusoidal rule sets to within 0.2–1.4 Ω of bs2.
-NEC-2's extended kernel does not fix the tapered case (still about 55 Ω
-off).
 
 ## Reproducing
 
