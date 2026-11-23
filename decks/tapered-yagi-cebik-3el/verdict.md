@@ -86,6 +86,127 @@ just as the odd-multiple ladder does:
 
 So there is no segment count at which raw NEC-2 reaches the answer here.
 
+## The Leeson correction
+
+The usual fix for NEC-2 and stepped elements is not a mesh rule. It is
+D. B. Leeson's (W6QHS, now W6NL) substitute element, from *Physical Design
+of Yagi Antennas* (ARRL, 1992), chapter 8. EZNEC applies it as its
+"stepped diameter correction". This section applies it to this yagi and
+asks whether NEC-2 then reaches the answer.
+
+**The method.** Each tapered element is replaced by one uniform cylinder,
+with its own diameter and length, chosen to have nearly the same
+self-impedance near resonance. Working on one half-element:
+
+1. Average the logarithm of the tube radii, each weighted by its tube's
+   length. This gives a first-order equivalent radius.
+2. Use that radius to get the average characteristic impedance of a
+   cylinder of the element's length.
+3. Assume a sinusoidal, resonant current. Sum each step's correction to the
+   cylinder's resonant self-reactance and to its slope with frequency. Each
+   step is weighted by how far its tubes sit from the mean radius, and by
+   the sine and cosine of the electrical distance from the centre to its
+   ends.
+4. The tapered element's reactance at the half-wave length gives its
+   resonance shift. That shift sets the corrected length, and the reactance
+   slope sets the corrected diameter.
+
+The frequency drops out, because the method works at the element's own
+resonance. It is valid for a straight, symmetric element fed or loaded only
+at its centre, and within about 15 % of resonance. All three elements here
+are within 7 %.
+
+Leeson's book was not available for this study. The equations come from
+the open transcription in fnec-rust (`crates/nec_solver/src/taper.rs`,
+commit `1c5a8d6e`, citing Eqs 8-44 to 8-59 and Tables 8-2/8-3).
+`study/leeson.py check` runs the implementation against three sets of
+published numbers:
+
+| case | l′ (this) | d′ (this) | l′ (published) | d′ (published) |
+| --- | --- | --- | --- | --- |
+| Leeson's worked example (as transcribed) | 95.70 | 0.5935 | 95.70 | 0.594 |
+| Cebik Fig. 16 top (3lyg3, EZNEC) | 98.57 | 0.6307 | 98.58 | 0.631 |
+| Cebik Fig. 16 middle | 98.67 | 0.5985 | 98.67 | 0.598 |
+| Cebik Fig. 16 bottom | 98.38 | 0.7385 | 98.39 | 0.739 |
+| Cebik amod10, one step far out | 201.41 | 0.9651 | 201.45 | 0.966 |
+| Cebik amod10, one step near centre | 201.70 | 0.7930 | 201.661 | 0.792 |
+| Cebik amod10, two steps | 201.52 | 0.8894 | 201.49 | 0.889 |
+| Cebik amod10, extreme taper | 201.73 | 0.8978 | 201.63 | 0.895 |
+
+All values are half-lengths and diameters in inches. Cebik's numbers are
+the substitutes EZNEC reported (3lyg3's Fig. 16 table, and "Tapering to
+Perfection", Antenna Modeling #10). The 10 m cases agree to 0.01 in. The
+14 MHz dipoles agree to 0.1 in and 0.003 in. That small residual may come
+from details of EZNEC's implementation; it is far too small to matter
+below.
+
+**The corrected elements.** The method has no single reference diameter.
+Each element gets its own:
+
+| element | physical length (in) | Leeson length (in) | Leeson OD (in) | length-weighted log-mean OD (in) |
+| --- | --- | --- | --- | --- |
+| reflector | 447.3 | 428.20 | 0.7823 | 0.7588 |
+| driven element | 421.6 | 403.59 | 0.8055 | 0.7784 |
+| director | 393.3 | 376.72 | 0.8339 | 0.8036 |
+
+`study/leeson.nec` is the corrected yagi: three uniform wires with the same
+spacing, fed at the driven element's centre, 14.175 MHz, 51 segments per
+element. `study/leeson.py deck N` writes it at N segments per element.
+
+**The ladder.** Zin is in Ω. Δ is measured from the verdict, 29.8 − j4.3 Ω.
+The bs2 and razor2p columns run the same rungs in NEC-5's dialect: the
+source sits at the driven element's middle knot, which adds one segment to
+that wire.
+
+| segments per element | nec2c | Δ (Ω) | abs ΔΓ (50 Ω) | momwire bs2 | momwire razor2p |
+| --- | --- | --- | --- | --- | --- |
+| 11 | 30.08 − j0.26 | 4.05 | 0.063 | 30.03 − j0.20 | |
+| 21 | 29.64 + j0.55 | 4.85 | 0.076 | 29.80 + j0.22 | 31.54 − j4.13 |
+| 31 | 29.46 + j0.89 | 5.20 | 0.082 | 29.69 + j0.44 | |
+| 51 | 29.27 + j1.25 | 5.57 | 0.088 | 29.56 + j0.68 | 30.52 − j1.47 |
+| 81 | 29.14 + j1.51 | 5.84 | 0.092 | 29.47 + j0.87 | |
+| 121 | 29.05 + j1.68 | 6.03 | 0.095 | 29.39 + j1.01 | 29.91 − j0.12 |
+| 201 | 28.98 + j1.83 | 6.19 | 0.098 | 29.31 + j1.16 | |
+| 301 | 28.93 + j1.91 | 6.27 | 0.099 | 29.26 + j1.26 | 29.53 + j0.69 |
+| 601 | | | | 29.23 + j1.32 | 29.36 + j1.05 |
+| 901 | | | | 29.21 + j1.35 | |
+
+**NEC-2 now converges, but to the wrong antenna.** The radius steps are
+gone, so nec2c converges. Its rungs flatten out near 28.9 + j1.9 Ω, within
+about 0.6 Ω of what bs2 and razor2p converge to on the same corrected
+deck, about 29.2 + j1.4 Ω. Leeson's correction does exactly what it
+promises: NEC-2 now solves the equivalent antenna correctly.
+
+**The equivalent is not the tapered antenna.** It converges about 5.7 Ω
+from the tapered yagi's answer (|ΔΓ| ≈ 0.09 at 50 Ω), almost all of it in
+reactance (+1.4 against −4.3 Ω). The correction takes NEC-2 from 55 Ω off
+and getting worse with refinement to about 6 Ω off and stable, but it does
+not reach 29.8 − j4.3 Ω. The coarse rungs land closer (4.1 Ω at 11
+segments per element) only because they have not converged yet.
+
+The residual is the substitution itself, element by element. In bs2, each
+element alone (the tapered one at m = 9 against its Leeson cylinder at 301
+segments) gives:
+
+| element alone | tapered (bs2) | Leeson equivalent (bs2) |
+| --- | --- | --- |
+| reflector | 99.51 + j73.45 | 93.38 + j78.89 |
+| driven element | 78.75 + j9.10 | 75.48 + j13.72 |
+| director | 61.24 − j56.70 | 59.82 − j53.74 |
+
+Each substitute reads 3 to 5.5 Ω more inductive than its tapered element, as
+if electrically a little long, with lower R. This matches Cebik's own
+figures: his Leeson-corrected driven elements read 2.3 to 3.8 Ω lower in R
+than MININEC, and the AK#896 dipole demo found the corrected R about 4 Ω
+low with X close. The correction is calibrated to the
+MININEC of its day and assumes a sinusoidal current. On a yagi those
+single-element errors combine through the coupling into the 5.7 Ω seen at
+the feed.
+
+**Cebik's own corrected results** cannot be compared here: 3lyg3 gives no
+corrected Zin for the 20 m high-load yagi, only "about 30 Ohms" for the
+feed, which both the tapered answer and the Leeson equivalent satisfy.
+
 **momwire's NEC-4.2-rule sinusoidal does not converge either.** It sits
 5–11 Ω off on the usable rungs (25.6 + j5.5 Ω at m = 9), and crosses the
 answer only once segments are about as short as the radius. Licensed
@@ -108,3 +229,8 @@ off).
   End-User Reports (LLNL-CODE-746721); only their numbers appear here.
 - momwire 0.97.1: each engine through its own launcher (`momwire-nec2c-sinusoidal`,
   `momwire-nec42-sinusoidal`, `momwire-nec5-razor2p`, `momwire-nec5-bs2`).
+- `study/leeson.py`: `check` (the method against its published cases),
+  `table` (the corrected elements), `deck N` (writes `study/leeson.nec` at
+  N = 51), `ladder` (the nec2c column). The bs2 and razor2p columns are the
+  same decks after `antennaknobs export --dialect nec5`, run through
+  `momwire-nec5-bs2` and `momwire-nec5-razor2p`.
