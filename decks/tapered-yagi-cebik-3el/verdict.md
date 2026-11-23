@@ -1,8 +1,8 @@
 # Verdict: Cebik's 3-element 20 m yagi with tapered elements
 
 **Added:** 2026-11-23 by Steve Burns, KK7KNB, from a segment-convergence
-study of momwire's engines. **Status: verdict published** (nec2c, NEC-5 and
-momwire; licensed NEC-4.2 not yet run).
+study of momwire's engines. **Status: verdict published** (nec2c, NEC-5,
+momwire and fnec-rust; licensed NEC-4.2 not yet run).
 
 ## The antenna
 
@@ -101,6 +101,32 @@ radius (9.525 mm, `study/uniform-control.nec`, detuned to about
 10.9 + j55 Ω) brings both sinusoidal rule sets to within 0.2–1.4 Ω of bs2.
 NEC-2's extended kernel does not fix the tapered case (still about 55 Ω
 off).
+
+## A fifth engine: fnec-rust
+
+fnec-rust 0.26.0 (Simon Keimer, DC0SK; GPL-3.0; github.com/dc0sk/fnec-rust,
+commit `2b258d9f`) is an independent, NEC-2-compatible engine with two
+formulations of its own: a Hallén integral equation (its default) and a
+mixed-potential integral equation (`--solver mpie`). It ran the same NEC-2
+rung decks unchanged on 2026-11-23:
+
+| m | fnec Hallén | fnec MPIE | momwire bs2 |
+| --- | --- | --- | --- |
+| 1 | 11.85 + j40.65 | 30.86 − j5.65 | 30.28 − j5.02 |
+| 3 | 30.29 − j4.92 | 30.32 − j4.85 | 30.12 − j4.66 |
+| 5 | 29.82 − j3.87 | 30.20 − j4.65 | 30.05 − j4.55 |
+| 9 | 28.68 − j1.39 | 30.09 − j4.47 | 29.98 − j4.45 |
+| 15 | 26.26 + j3.62 | 30.01 − j4.34 | 29.95 − j4.39 |
+| 29 | refused | refused | 29.90 − j4.34 |
+
+- **fnec's MPIE converges to the call**, within about 0.1 Ω of bs2 from
+  m = 9: a third independent formulation agreeing with bs2 and NEC-5.
+- **fnec's Hallén solve is close at m = 3, then drifts away** as the mesh
+  refines (26.3 + j3.6 Ω at m = 15): a milder form of NEC-2's behaviour on
+  the same radius steps.
+- **At m = 29 both refuse the deck by name:** the feed segment is shorter
+  than about twice its radius ("EX on tiny segment … L/r = 1.617"), a
+  class fnec declines rather than answers.
 
 ## The Leeson correction
 
