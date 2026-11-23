@@ -132,11 +132,14 @@ resonance. It is valid for a straight, symmetric element fed or loaded only
 at its centre, and within about 15 % of resonance. All three elements here
 are within 7 %.
 
-Leeson's book was not available for this study. The equations come from
-the open transcription in fnec-rust (`crates/nec_solver/src/taper.rs`,
-commit `1c5a8d6e`, citing Eqs 8-44 to 8-59 and Tables 8-2/8-3).
-`study/leeson.py check` runs the implementation against three sets of
-published numbers:
+Leeson's book was not available for this study. We checked the tapered
+yagi with the algorithm in fnec-rust (Simon Keimer, DC0SK;
+`crates/nec_solver/src/taper.rs`, commit `1c5a8d6e`), whose author
+describes it as a transcription of the book's Eqs 8-44 to 8-59 and
+Tables 8-2/8-3, and then deleted our implementation: it was a translation
+of that GPL-3.0 code, and this repository is MIT. The numbers below come
+from that check. First, the algorithm against three sets of published
+numbers:
 
 | case | l′ (this) | d′ (this) | l′ (published) | d′ (published) |
 | --- | --- | --- | --- | --- |
@@ -167,7 +170,7 @@ Each element gets its own:
 
 `study/leeson.nec` is the corrected yagi: three uniform wires with the same
 spacing, fed at the driven element's centre, 14.175 MHz, 51 segments per
-element. `study/leeson.py deck N` writes it at N segments per element.
+element; the other rungs differ only in the GW segment count.
 
 **The ladder.** Zin is in Ω. Δ is measured from the verdict, 29.8 − j4.3 Ω.
 The bs2 and razor2p columns run the same rungs in NEC-5's dialect: the
@@ -233,8 +236,9 @@ feed, which both the tapered answer and the Leeson equivalent satisfy.
   End-User Reports (LLNL-CODE-746721); only their numbers appear here.
 - momwire 0.97.1: each engine through its own launcher (`momwire-nec2c-sinusoidal`,
   `momwire-nec42-sinusoidal`, `momwire-nec5-razor2p`, `momwire-nec5-bs2`).
-- `study/leeson.py`: `check` (the method against its published cases),
-  `table` (the corrected elements), `deck N` (writes `study/leeson.nec` at
-  N = 51), `ladder` (the nec2c column). The bs2 and razor2p columns are the
-  same decks after `antennaknobs export --dialect nec5`, run through
-  `momwire-nec5-bs2` and `momwire-nec5-razor2p`.
+- The Leeson-corrected elements were computed with fnec-rust's
+  `taper.rs` algorithm (GPL-3.0, so not included here); `study/leeson.nec`
+  is the resulting deck. The nec2c column runs it at the segment counts
+  shown; the bs2 and razor2p columns are the same decks after
+  `antennaknobs export --dialect nec5`, run through `momwire-nec5-bs2` and
+  `momwire-nec5-razor2p`.
