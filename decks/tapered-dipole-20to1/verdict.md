@@ -92,6 +92,30 @@ NEC-4.2 reads it ~8 Ω high (j16.5 at ×5) and also drifts upward. A
 NEC-4.2 user modelling a steeply tapered element should not take its
 reactance as converged, at least not on this geometry.
 
+## 2026-11-23: a fifth engine, fnec-rust
+
+fnec-rust 0.26.0 (Simon Keimer, DC0SK; GPL-3.0; github.com/dc0sk/fnec-rust,
+commit `2b258d9f`) is an independent, NEC-2-compatible engine with two
+formulations of its own: a Hallén integral equation (its default) and a
+mixed-potential integral equation (`--solver mpie`). It read `tapered.nec`
+and its odd-multiple rungs unchanged (it ignores the `EK` card and says
+so). The bs2 column is momwire 0.97.1 on the same rungs.
+
+| m | segments per section | fnec Hallén | fnec MPIE | momwire bs2 |
+| --- | --- | --- | --- | --- |
+| 1 | 3 | 75.15 + j5.92 | 75.34 + j7.46 | 75.78 + j7.36 |
+| 3 | 9 | 75.78 + j7.31 | 75.76 + j8.27 | 75.99 + j7.90 |
+| 5 | 15 | 75.90 + j7.09 | 75.91 + j8.57 | 76.06 + j7.98 |
+| 9 | 27 | 75.94 + j6.36 | 76.08 + j8.89 | 76.13 + j8.01 |
+| 15 | 45 | refused | refused | 76.19 + j7.97 |
+
+- **Both of fnec's formulations land on the consensus, ≈ 76 + j8 Ω**,
+  not on raw NEC-2's j31. MPIE reads about 0.9 Ω more reactance than bs2
+  at m = 9 and was still rising; Hallén reads about 1.6 Ω less, falling.
+- **From m = 15 fnec refuses the deck by name:** the fed segment is
+  shorter than about twice its 14.4 mm radius ("EX on tiny segment … L/r
+  = 1.617"), a class it declines rather than answers.
+
 ## Reproducing
 
 The deck is `tapered.nec` in this directory, verbatim as submitted.
